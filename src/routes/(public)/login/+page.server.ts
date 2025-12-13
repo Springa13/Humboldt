@@ -83,7 +83,7 @@ export const actions: Actions = {
 			const session = await auth.createSession(sessionToken, userId);
 			auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
 		} catch {
-			return fail(500, { message: 'An error has occurred' });
+			return fail(500, { message: 'Username already taken' });
 		}
 		return redirect(302, '/home');
 	},

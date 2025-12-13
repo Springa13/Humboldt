@@ -73,7 +73,7 @@
             </a>
 
             <a 
-                href="/signup" 
+                href="/login" 
                 id="signup-button" 
                 class="
                     text-[#fff9f0] 

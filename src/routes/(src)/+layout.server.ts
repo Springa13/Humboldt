@@ -7,7 +7,7 @@ import { eq } from 'drizzle-orm';
 export const load: LayoutServerLoad = async ({ locals }) => {
   if (!locals.user) {
     throw redirect(302, '/');
-  }
+  } 
 
 
   const userInfo = await db

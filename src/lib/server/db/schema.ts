@@ -1,9 +1,10 @@
-import { pgTable, serial, integer, text, varchar, timestamp, index, foreignKey, jsonb } from 'drizzle-orm/pg-core';
+import { pgTable, serial, integer, text, varchar, timestamp, index, foreignKey, jsonb, boolean } from 'drizzle-orm/pg-core';
 
 export const user = pgTable('user', {
 	id: text('id').primaryKey(),
 	username: text('username').notNull().unique(),
-	passwordHash: text('password_hash').notNull()
+	passwordHash: text('password_hash').notNull(),
+  isAdmin: boolean('is_admin').default(false).notNull(),
 });
 
 export const session = pgTable('session', {
