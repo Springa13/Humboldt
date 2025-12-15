@@ -1,10 +1,15 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
-import * as schema from './schema';
+// src/lib/server/db.ts (or similar)
+import 'dotenv/config'; // For local development only, SvelteKit handles this for Vercel
+import { neon } from '@neondatabase/serverless';
 import { env } from '$env/dynamic/private';
 
-if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
+// The key 'DATABASE_URL' is a common convention
+const connectionString: string = env.DATABASE_URL as string; 
 
-const client = postgres(env.DATABASE_URL);
+if (!connectionString) {
+  throw new Error('DATABASE_URL environment variable is not set');
+}
 
-export const db = drizzle(client, { schema });
+const sql = neon(connectionString);
+
+export { sql };
