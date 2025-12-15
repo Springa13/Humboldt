@@ -1,4 +1,4 @@
-import { db } from '$lib/server/db';
+import { db } from '$lib/server/db/';
 import { sentences, words } from '$lib/server/db/schema.js';
 import { json } from '@sveltejs/kit';
 import { sql, eq } from 'drizzle-orm';

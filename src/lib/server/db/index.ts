@@ -10,6 +10,6 @@ if (!connectionString) {
   throw new Error('DATABASE_URL environment variable is not set');
 }
 
-const sql = neon(connectionString);
+const db = neon(connectionString);
 
-export { sql };
+export { db };
