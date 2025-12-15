@@ -2,6 +2,7 @@
 import 'dotenv/config'; // For local development only, SvelteKit handles this for Vercel
 import { neon } from '@neondatabase/serverless';
 import { env } from '$env/dynamic/private';
+import { drizzle } from 'drizzle-orm/singlestore/driver';
 
 // The key 'DATABASE_URL' is a common convention
 const connectionString: string = env.DATABASE_URL as string; 
@@ -10,6 +11,6 @@ if (!connectionString) {
   throw new Error('DATABASE_URL environment variable is not set');
 }
 
-const db = neon(connectionString);
+const sql = neon(connectionString);
 
-export { db };
+export const db = drizzle(sql);
